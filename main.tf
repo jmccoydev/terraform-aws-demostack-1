@@ -12,7 +12,7 @@ terraform {
 }
 
 // Workspace Data
-data "terraform_remote_state" "devworks_tls_root_certificate" {
+data "terraform_remote_state" "tls" {
   backend =  "remote"
   config = {
     hostname     = "app.terraform.io"
