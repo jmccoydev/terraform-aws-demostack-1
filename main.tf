@@ -1,26 +1,27 @@
 //--------------------------EMEA-SE_PLAYGROUND-2019-----------------------------------------
+//-------------------------------------------------------------------
 # Using a single workspace:
-
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
+    organization = "devworks"
+
     workspaces {
-      name = "Guy-AWS-Demostack"
+      name = "terraform-aws-demostack"
     }
   }
 }
 
 // Workspace Data
-data "terraform_remote_state" "tls" {
-  backend = "remote"
+data "terraform_remote_state" "devworks_tls_root_certificate" {
+  backend =  "remote"
   config = {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
-    workspaces = {
-      name = "tls-root-certificate"
+    organization = "devworks"
+    workspaces  = {
+      name = "terraform-tls-certificate"
     }
-  } //config
+  }
 }
 
 data "terraform_remote_state" "dns" {
@@ -28,9 +29,9 @@ data "terraform_remote_state" "dns" {
 
   config = {
     hostname     = "app.terraform.io"
-    organization = "emea-se-playground-2019"
+    organization = "devworks"
     workspaces = {
-      name = "Guy-DNS-Zone"
+      name = "dns-multicloud"
     }
   } //network
 }
