@@ -80,8 +80,7 @@ module "primarycluster" {
   cidr_blocks          = var.cidr_blocks
   instance_type_server = var.instance_type_server
   instance_type_worker = var.instance_type_worker
-  zone_id              = var.zone_id
-  # zone_id              = data.terraform_remote_state.dns.outputs.aws_sub_zone_id
+  zone_id              = data.terraform_remote_state.dns.outputs.aws_sub_zone_id[0]
   run_nomad_jobs       = var.run_nomad_jobs
   host_access_ip       = var.host_access_ip
   primary_datacenter   = var.primary_namespace
